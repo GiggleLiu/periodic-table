@@ -1,0 +1,5 @@
+# Compiled output
+*.pdf
+
+# Typst cache
+.typst/
