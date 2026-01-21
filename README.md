@@ -1,5 +1,7 @@
 # Periodic Table for Typst
 
+[![Test](https://github.com/GiggleLiu/periodic-table/actions/workflows/test.yml/badge.svg)](https://github.com/GiggleLiu/periodic-table/actions/workflows/test.yml)
+
 A Typst package for rendering periodic tables of elements with two style options:
 
 1. **`periodic-table()`** - Compact version for slides and handouts
