@@ -201,27 +201,29 @@
 }
 
 // Element box function for periodic table (compact version)
-#let pt-element(x, y, number, symbol, mass, fill-color: white, size: 1.0, gap: 0.1, highlighted: false, highlight-stroke: red + 2pt) = {
+#let pt-element(x, y, number, symbol, mass, fill-color: white, size: 1.0, gap: 0.1, highlighted: false, highlight-stroke: luma(20%) + 3pt) = {
   import draw: *
   let s = size
-  let stroke-style = if highlighted { highlight-stroke } else { black + 0.3pt }
   group({
     translate((x * (size + gap), -y * (size + gap)))
-    rect((0, 0), (s, s), fill: fill-color, stroke: stroke-style)
+    rect((0, 0), (s, s), fill: fill-color, stroke: black + 0.3pt)
     content((0.1 * s, 0.85 * s), text(5pt)[#number], anchor: "west")
     content((0.5 * s, 0.5 * s), text(10pt, weight: "bold")[#symbol])
     content((0.5 * s, 0.15 * s), text(5.5pt)[#mass])
+    // Draw highlight border on top
+    if highlighted {
+      rect((0, 0), (s, s), fill: none, stroke: highlight-stroke)
+    }
   })
 }
 
 // Professional element box with all details (ACS style)
-#let pt-element-detailed(x, y, number, symbol, name, mass, fill-color: white, size: 1.8, gap: 0.15, highlighted: false, highlight-stroke: red + 2pt) = {
+#let pt-element-detailed(x, y, number, symbol, name, mass, fill-color: white, size: 1.8, gap: 0.15, highlighted: false, highlight-stroke: luma(20%) + 3pt) = {
   import draw: *
   let s = size
-  let stroke-style = if highlighted { highlight-stroke } else { black + 0.5pt }
   group({
     translate((x * (size + gap), -y * (size + gap)))
-    rect((0, 0), (s, s), fill: fill-color, stroke: stroke-style)
+    rect((0, 0), (s, s), fill: fill-color, stroke: black + 0.5pt)
     // Atomic number (top left)
     content((0.12 * s, 0.88 * s), text(7pt, fill: white, weight: "bold")[#number], anchor: "west")
     // Symbol (center, large)
@@ -230,6 +232,10 @@
     content((0.5 * s, 0.32 * s), text(6pt, fill: white)[#name])
     // Atomic mass (bottom)
     content((0.5 * s, 0.12 * s), text(7pt, fill: white)[#mass])
+    // Draw highlight border on top
+    if highlighted {
+      rect((0, 0), (s, s), fill: none, stroke: highlight-stroke)
+    }
   })
 }
 
@@ -250,7 +256,7 @@
   show-title: true,
   show-legend: true,
   highlighted: (),
-  highlight-stroke: red + 2pt,
+  highlight-stroke: luma(20%) + 3pt,
 ) = canvas(length: length, {
   import draw: *
 
@@ -311,7 +317,7 @@
   show-labels: true,
   show-legend: true,
   highlighted: (),
-  highlight-stroke: red + 2pt,
+  highlight-stroke: luma(20%) + 3pt,
 ) = canvas(length: length, {
   import draw: *
 

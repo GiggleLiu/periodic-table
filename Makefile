@@ -31,6 +31,7 @@ images:
 	@echo "Generating images..."
 	@$(TYPST) examples/compact.typ images/compact.png
 	@$(TYPST) examples/detailed.typ images/detailed.png
+	@$(TYPST) examples/rydberg.typ images/rydberg.png
 	@echo "Images generated!"
 
 clean:

@@ -60,7 +60,7 @@ With custom parameters:
 | `gap` | `0.1` (compact) / `0.15` (detailed) | Gap between element boxes |
 | `show-legend` | `true` | Whether to show the category legend |
 | `highlighted` | `()` | Array of atomic numbers to highlight |
-| `highlight-stroke` | `red + 2pt` | Stroke style for highlighted elements |
+| `highlight-stroke` | `luma(20%) + 3pt` | Stroke style for highlighted elements (dark gray) |
 
 ### Function-Specific Parameters
 
@@ -71,6 +71,15 @@ With custom parameters:
 ### Highlighting Elements
 
 You can highlight specific elements by passing their atomic numbers:
+
+```typst
+// Highlight Rydberg atom elements: Rb, Cs, Sr
+#periodic-table-detailed(
+  highlighted: (37, 55, 38),
+)
+```
+
+![Rydberg atoms highlighted](images/rydberg.png)
 
 ```typst
 // Highlight noble gases
